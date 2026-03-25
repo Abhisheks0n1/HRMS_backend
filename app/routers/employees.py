@@ -41,7 +41,7 @@ def update_employee_route(employee_id: str, employee_update: EmployeeCreate, db:
     if existing and existing.employee_id != employee_id:
         raise HTTPException(status_code=400, detail="Employee ID already taken by another employee")
     
-    return update_employee(db, employee_id, employee_update.model_dump())
+    return update_employee(db, employee_id, employee_update.dict())
 
 
 @router.delete("/{employee_id}", status_code=status.HTTP_204_NO_CONTENT)
