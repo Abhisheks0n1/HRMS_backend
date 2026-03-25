@@ -14,4 +14,4 @@ class AttendanceRead(BaseModel):
     status: Literal["Present", "Absent"]
 
     class Config:
-        from_attributes = True
+        orm_mode = True
