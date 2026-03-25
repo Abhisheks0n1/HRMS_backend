@@ -11,7 +11,7 @@ def get_employee_by_id(db: Session, employee_id: str):
     return db.query(Employee).filter(Employee.employee_id == employee_id).first()
 
 def create_employee(db: Session, employee: EmployeeCreate):
-    db_employee = Employee(**employee.model_dump())
+    db_employee = Employee(**employee.dict())
     db.add(db_employee)
     try:
         db.commit()
