@@ -11,7 +11,7 @@ def create_attendance(db: Session, attendance: AttendanceCreate):
     employee = db.query(Employee).filter(Employee.employee_id == attendance.employee_id).first()
     if not employee:
         raise HTTPException(status_code=404, detail="Employee not found")
-    db_att = Attendance(**attendance.model_dump())
+    db_att = Attendance(**attendance.dict())
     db.add(db_att)
     try:
         db.commit()
